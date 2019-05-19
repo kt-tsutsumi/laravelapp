@@ -11,12 +11,10 @@ class ArticleController extends Controller
 
   public function index(){
 
-    $user=Auth::user();
     $items=DB::table('article')->orderBy('id','desc')->get();
 
     $data=[
       'items'=>$items,
-      'user'=>$user,
     ];
     return view("articleIndex",$data);
   }//
@@ -30,7 +28,8 @@ class ArticleController extends Controller
 
     if(empty($items)){
       return redirect("../article");
-    }
+    }/usr/local/bin/php71cli -d register_argc_argv=1 "./composer.phar" create-project laravel/laravel exampleproject --prefer-dist
+ln -s /virtual/youraccountname/exampleproject/public public_html/example.com
 
     foreach ($items as $item) {
       $data=[
