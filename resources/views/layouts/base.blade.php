@@ -14,8 +14,8 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
 
-    <body style="background:#f6f6f6;">
-      <nav class="navbar navbar-default" style="background:#B2C6E6;padding:0 10%">
+    <body style="background:#f8fafc;">
+      <nav class="navbar navbar-default" style="background:#fff;padding: 0 10%">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
             <span class="sr-only">メニュー</span>
@@ -40,7 +40,7 @@
         </div>
       </nav>
 
-<div class="content" style="min-height:50vw;background:#fff;padding:20px;width:80%;margin: 0 auto;">
+<div class="content" style="border:1px solid #ccc;min-height:50vw;background:#fff;padding:20px;width:80%;margin: 0 auto;">
   @yield('content')
 </div>
 <div class="footer" style="padding:50px 0px;height:120px;text-align:center;">

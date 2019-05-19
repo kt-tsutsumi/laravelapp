@@ -44,13 +44,15 @@
         $('#button').on('click', function() {
           var data = CKEDITOR.instances.editor.getData();
           data = data.replace(/<strong>(.*)<\/strong>/g,"$1");
+          data = data.replace(/&nbsp;/g,"");
+          data = data.replace(/<p><br \/>\n<\/p>/g,"");
 
           try {
 
             var titledata=data.match(/<p>タイトル：[\s\S]*?<\/p>/);
             title=titledata[0].replace(/<p>タイトル：([\s\S]*?)<\/p>/,"$1");
 
-            var reference = data.split('<p>参考参考</p>');
+            var reference = data.split('<p>参考</p>');
             reference[1]=reference[1].replace(/<a href=\"([\s\S]*?)\">([\s\S]*?)<\/a>/g,"<a class=\"deco\" href=\"$1\">$2</a>");
             data = reference[0]+'<span class="bold"><i class="fa fa-check-circle"></i>参考</span>'+reference[1];
 
@@ -61,6 +63,7 @@
           }
 
           data = data.replace(/<p>(.*)<\/p>/g,"$1");
+
           data = data.replace(/\（引用.+<\/a>\）/g,"<span style=\"font-size:12px\">$&</span>");
           data = data.replace(/\（参考.+<\/a>.*\）/g,"<span style=\"font-size:12px\">$&</span>");
           data = data.replace(/\（出典.+<\/a>.*\）/g,"<span style=\"font-size:12px\">$&</span>");
