@@ -11,7 +11,7 @@ class ArticleController extends Controller
 
   public function index(){
 
-    $items=DB::table('article')->orderBy('id','desc')->get();
+    $items=DB::table('article')->where('userid',Auth::user()->id)->orderBy('id','desc')->get();
 
     $data=[
       'items'=>$items,
@@ -77,9 +77,10 @@ class ArticleController extends Controller
       'title'=>$request->title,
       'contents'=>$request->contents,
       'date'=>date("Y/m/d H:i:s"),
+      'userid'=>Auth::user()->id,
     ];
 
-    DB::insert('insert into article (title,contents,date) values (:title, :contents, :date)',$param);
+    DB::insert('insert into article (title,contents,date,userid) values (:title, :contents, :date, :userid)',$param);
 
 
     return redirect("../article");
