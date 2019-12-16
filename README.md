@@ -2,11 +2,11 @@
 https://wpapp0519.herokuapp.com/
 
 ### テストアカウント
-ID:test@tsutsumi.info
-PASSWORD: password
+- ID:test@tsutsumi.info
+- PASSWORD: password
 
 ## 内容
-WordPressにGoogleドキュメントで書いた原稿を入稿する際に出現する
+WordPressにGoogleドキュメントで書いた原稿を入稿する際に出現する、
 不要なタグの削除やclassの追加などの置換を一気に行うことができる。
 
 ### タグ置換例（JQueryで正規表現を用い置換処理)
