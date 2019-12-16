@@ -6,16 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Auth;
+use Input;
+
 class ArticleController extends Controller
 {
-
-  public function index(){
-
-    $items=DB::table('article')->where('userid',Auth::user()->id)->orderBy('id','desc')->get();
+  public function index(Request $request){
+    $word = $request->word;
+    if($word != ""){
+      $items=DB::table('article')->where('userid',Auth::user()->id)->where('contents','like',"%$word%")->orderBy('id','desc')->get();
+    }else{
+      $items=DB::table('article')->where('userid',Auth::user()->id)->orderBy('id','desc')->get();
+    }
 
     $data=[
       'items'=>$items,
     ];
+
     return view("articleIndex",$data);
   }//
 
